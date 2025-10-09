@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Group ID nên khớp với package chính -->
+    <groupId>QuocThinh.example</groupId>
+    <!-- Artifact ID đặt theo tên project -->
+    <artifactId>AccountServiceDemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <!-- Bạn đang dùng JDK 24 -->
+        <maven.compiler.source>24</maven.compiler.source>
+        <maven.compiler.target>24</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- JUnit Jupiter API (cần có để dùng @Test, @BeforeEach, @DisplayName, ...) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.12.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JUnit Jupiter Engine (bắt buộc để chạy test) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.12.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JUnit Jupiter Params: dùng cho @ParameterizedTest, @CsvFileSource -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.12.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Plugin chạy unit test -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.3</version>
+            </plugin>
+
+            <!-- Plugin đo độ bao phủ mã (Jacoco) -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.13</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
